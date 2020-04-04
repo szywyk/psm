@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#db4938" />
+    <link rel="apple-touch-icon" href="images/icons/bicycle-192x192.png" />
+    <link rel="apple-touch-icon" href="images/icons/bicycle-512x512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+    <link rel="manifest" href="manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Bicycle PWA</title>
+  </head>
+  <body>
+    <script src="/app.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <main>
+      <div class="container">
+        <div class="row align-items-start">
+          <table class="table table-striped">
+            <tr>
+              <td colspan="2" style="text-align: center;">
+                ROWER
+                <br />
+                Pojazd napędzany siłą ludzkich mięśni
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <!--Navbar-->
+                <nav class="navbar navbar-light light-blue lighten-4">
+                  <!-- Collapse button -->
+                  <button
+                    class="navbar-toggler toggler-example"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent1"
+                    aria-controls="navbarSupportedContent1"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"
+                      ><i class="fas fa-bars fa-1x"></i
+                    ></span>
+                  </button>
+
+                  <!-- Collapsible content -->
+                  <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent1"
+                  >
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#"
+                          >Firma <span class="sr-only">(current)</span></a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Produkty</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Kontakt</a>
+                      </li>
+                    </ul>
+                    <!-- Links -->
+                  </div>
+                  <!-- Collapsible content -->
+                </nav>
+                <!--/.Navbar-->
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 33.3;">
+                <b>Definicja roweru</b>
+              </td>
+              <td style="width: 66.6%;">
+                <b
+                  ><p class="text-center">
+                    Rodzaje rowerów
+                  </p></b
+                >
+              </td>
+            </tr>
+
+            <tbody>
+              <tr
+                class="clickable"
+                data-toggle="collapse"
+                data-target="#group-of-rows-1"
+                aria-expanded="false"
+                aria-controls="group-of-rows-1"
+              >
+                <td>
+                  <b>Rower miejski</b>
+                </td>
+                <td>Kliknij tu, aby zobaczyć</td>
+              </tr>
+            </tbody>
+            <tbody id="group-of-rows-1" class="collapse">
+              <tr>
+                <td></td>
+                <td class="d-flex flex-column align-items-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Brosen_city_bicycle.jpg"
+                    class="img-responsive mx-auto w-50 p-2"
+                  />
+                  <p class="text-center">
+                    Tradycyjny rower miejski, tak zwany holender, zbudowany jest
+                    najczęściej na kołach 28-calowych (choć spotyka się również
+                    rowery z kołami 26- i 27-calowymi)
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr
+                class="clickable"
+                data-toggle="collapse"
+                data-target="#group-of-rows-2"
+                aria-expanded="false"
+                aria-controls="group-of-rows-2"
+              >
+                <td>
+                  <b>Rower górski</b>
+                </td>
+                <td>Kliknij tu, aby zobaczyć</td>
+              </tr>
+            </tbody>
+            <tbody id="group-of-rows-2" class="collapse">
+              <tr>
+                <td></td>
+                <td class="d-flex flex-column align-items-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Bike_%283586544974%29.jpg/2560px-Bike_%283586544974%29.jpg"
+                    class="img-responsive w-50 p-2"
+                  />
+                  <p class="text-center">
+                    Rower, którego przeznaczeniem jest jazda w terenie
+                    trudniejszym, np. górskie ścieżki, szlaki leśne, specjalne
+                    tory przeszkód.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr
+                class="clickable"
+                data-toggle="collapse"
+                data-target="#group-of-rows-3"
+                aria-expanded="false"
+                aria-controls="group-of-rows-3"
+              >
+                <td>
+                  <b>Rower trekingowy</b>
+                </td>
+                <td>Kliknij tu, aby zobaczyć</td>
+              </tr>
+            </tbody>
+            <tbody id="group-of-rows-3" class="collapse">
+              <tr>
+                <td></td>
+                <td class="d-flex flex-column align-items-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/1/11/Reiserad-beladen.jpg"
+                    class="img-responsive w-50 p-2"
+                  />
+                  <p class="text-center">
+                    Rower do uprawiania zaawansowanej turystyki rowerowej,
+                    polegającej na przemierzaniu długich, często wielodniowych
+                    tras, zarówno po drogach asfaltowych jak i drogach o
+                    nawierzchni nieutwardzonej.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr
+                class="clickable"
+                data-toggle="collapse"
+                data-target="#group-of-rows-4"
+                aria-expanded="false"
+                aria-controls="group-of-rows-4"
+              >
+                <td>
+                  <b>Rower szosowy</b>
+                </td>
+                <td>
+                  Kliknij tu, aby zobaczyć
+                </td>
+              </tr>
+            </tbody>
+            <tbody id="group-of-rows-4" class="collapse">
+              <tr>
+                <td></td>
+                <td class="d-flex flex-column align-items-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Taiji_carbon_road_bike_from_Taiwan.jpg"
+                    class="img-responsive w-50 p-2"
+                  />
+                  <p class="text-center">
+                    Sportowy rower, dostosowywany przede wszystkim do jazdy na
+                    twardej drodze
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <script src="js/app.js"></script>
+  </body>
+</html>
