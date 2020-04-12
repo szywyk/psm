@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <button onclick="read()">Read</button>
+        <p id="book"></p>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+        
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDfrxcBDsErwn0sbl6A-NznYnx0GNO-QEs",
+                authDomain: "mybook-4cdde.firebaseapp.com",
+                databaseURL: "https://mybook-4cdde.firebaseio.com",
+                projectId: "mybook-4cdde",
+                storageBucket: "mybook-4cdde.appspot.com",
+                messagingSenderId: "572125245691",
+                appId: "1:572125245691:web:ee00db16906af7033d005e"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            read = function() {
+                let db = firebase.firestore()
+                db.collection("books").get().then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        document.getElementById("book").innerHTML = 
+                        `Moja książka: ${doc.data().author} - ${doc.data().title}, ${doc.data().year}, 
+                        gatunek: ${doc.data().genre}, ISBN: ${doc.data().ISBN}`
+                    });
+                });
+            }
+        </script>
+    </body>
+</html>

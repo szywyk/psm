@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button onclick="read()" id="readButton">Read</button>
+        <button onclick = "save()" id="saveButton">Save</button>
+        <p id="people"></p>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+        
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDfrxcBDsErwn0sbl6A-NznYnx0GNO-QEs",
+                authDomain: "mybook-4cdde.firebaseapp.com",
+                databaseURL: "https://mybook-4cdde.firebaseio.com",
+                projectId: "mybook-4cdde",
+                storageBucket: "mybook-4cdde.appspot.com",
+                messagingSenderId: "572125245691",
+                appId: "1:572125245691:web:ee00db16906af7033d005e"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            read = function() {
+                    var method = 'GET'
+				    var URL = 'MOCK_DATA.json'
+				    var xhr = new XMLHttpRequest()
+			    	xhr.onreadystatechange = function(){display(this)}
+				    xhr.open(method, URL)
+				    xhr.send()
+                }
+
+                function display(r){
+                    if(r.readyState==4 && r.status==200) {
+                        let people = JSON.parse(r.responseText)
+                        for(let i=0; i<people.length; i++){
+                            $("#people").append(`<br>${people[i].first_name} ${people[i].last_name},
+                            ${people[i].email}, ${people[i].gender}, ${people[i].department}`)
+                        }
+                    }
+			    }
+            
+            save = function() {
+                    const firestore = firebase.firestore();
+    
+                    var json = "./MOCK_DATA.json"
+                    fetch(json)
+                        .then(response => response.json())
+                        .then(json => {
+                            for (let data of json) {
+
+                                const workData = firestore.doc('workers/worker' + data.id)
+
+                                workData.set({
+                                    id: data.id,
+                                    first_name: data.first_name,
+                                    last_name: data.last_name,
+                                    email: data.email,
+                                    gender: data.gender,
+                                    department: data.department
+                                }).then(
+                                    console.log('Added' + data.id)
+                                ).catch(function(error) {
+                                    console.log("Error!")
+                                })
+
+                            }
+                        })
+                    }
+            
+        </script>
+    </body>
+</html>

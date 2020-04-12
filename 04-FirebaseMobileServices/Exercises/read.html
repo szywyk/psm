@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <div id="main"></div>
+
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+
+    <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDfrxcBDsErwn0sbl6A-NznYnx0GNO-QEs",
+                authDomain: "mybook-4cdde.firebaseapp.com",
+                databaseURL: "https://mybook-4cdde.firebaseio.com",
+                projectId: "mybook-4cdde",
+                storageBucket: "mybook-4cdde.appspot.com",
+                messagingSenderId: "572125245691",
+                appId: "1:572125245691:web:ee00db16906af7033d005e"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+    
+        const firestore = firebase.firestore();
+
+        const div = document.getElementById("main")
+
+
+        const data = firestore.collection('workers')
+        var frag = document.createDocumentFragment()
+        var table = document.createElement("table")
+        data.get().then(function (querySnapshot) {
+            querySnapshot.forEach(worker => {
+                var tr = document.createElement("tr")
+                var trValues = [worker.data().first_name, worker.data().last_name, worker.data().gender, worker.data().email, worker.data().department]
+
+                trValues.forEach(car => {
+                    var td = document.createElement("td")
+                    td.textContent = car
+                    tr.appendChild(td)
+                })
+                table.appendChild(tr)
+            })
+        })
+        frag.appendChild(table)
+        document.body.appendChild(frag)
+
+    </script>
+
+    <style>
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            border-spacing: 0px;
+        }
+    </style>
+</body>
+</html>

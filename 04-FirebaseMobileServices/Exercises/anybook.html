@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <form id="newBook">
+                <div class="form-group">
+                  <label for="author">author:</label>
+                  <input type="text" class="form-control" id="author" name="author">
+                </div>
+                <div class="form-group">
+                    <label for="genre">genre:</label>
+                    <input type="text" class="form-control" id="genre" name="genre">
+                  </div>
+              <div class="form-group">
+                <label for="title">title:</label>
+                <input type="text" class="form-control" id="title" name="title">
+              </div>
+              <div class="form-group">
+                <label for="year">year:</label>
+                <input type="text" class="form-control" id="year" name="year">
+              </div>
+              <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" class="form-control" id="isbn" name="isbn">
+              </div>
+            </form>
+            <button class="btn btn-primary" onclick="add()">Zapisz</button>
+            <p id="book"></p>
+          </div>
+        
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+        
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyDfrxcBDsErwn0sbl6A-NznYnx0GNO-QEs",
+                authDomain: "mybook-4cdde.firebaseapp.com",
+                databaseURL: "https://mybook-4cdde.firebaseio.com",
+                projectId: "mybook-4cdde",
+                storageBucket: "mybook-4cdde.appspot.com",
+                messagingSenderId: "572125245691",
+                appId: "1:572125245691:web:ee00db16906af7033d005e"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const docRef = firebase.firestore().doc("books/book")
+
+            add = function() {
+                arr = $('#newBook').serializeArray()
+                values = []
+                arr.forEach(element => {
+                    values.push(element.value)
+                })
+                let book = {
+                        author: values[0],
+                        genre: values[1],
+                        title: values[2],
+                        year: values[3],
+                        ISBN: values[4]
+                        }
+                    docRef.set(book).then(function() {
+                        console.log("Saved in db!")
+                        docRef.get().then((doc) => {
+                            if (doc && doc.exists) {
+                                document.getElementById("book").innerHTML = 
+                                    `Moja książka: ${doc.data().author} - ${doc.data().title}, ${doc.data().year}, 
+                                    gatunek: ${doc.data().genre}, ISBN: ${doc.data().ISBN}`
+                            }
+                        })
+                    }).catch(function (error) {
+                        console.log("Error!")
+                    })
+            }
+        </script>
+    </body>
+</html>
